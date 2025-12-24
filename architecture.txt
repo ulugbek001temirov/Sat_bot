@@ -1,0 +1,19 @@
+# ==================== PROJECT STRUCTURE ====================
+# sat_bot_project/
+# ├── manage.py
+# ├── sat_bot_project/
+# │   ├── __init__.py
+# │   ├── settings.py
+# │   ├── urls.py
+# │   └── wsgi.py
+# ├── bot/
+# │   ├── __init__.py
+# │   ├── models.py
+# │   ├── admin.py
+# │   ├── apps.py
+# │   ├── handler.py
+# │   ├── registerlogin.py
+# │   └── main.py
+# └── requirements.txt
+
+# ==================== requirements.txt ====================
