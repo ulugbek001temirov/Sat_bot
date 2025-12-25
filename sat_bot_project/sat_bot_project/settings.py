@@ -121,3 +121,5 @@ STATIC_URL = "static/"
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT.mkdir(parents=True, exist_ok=True)
+(MEDIA_ROOT / 'images').mkdir(exist_ok=True)
