@@ -95,7 +95,7 @@ class UserAdmin(admin.ModelAdmin):
 class QuestionInline(admin.TabularInline):
     model = Question
     extra = 1
-    fields = ['module', 'question_number', 'question_text', 'option_a', 'option_b', 
+    fields = ['module', 'question_number', 'question_text', 'image', 'option_a', 'option_b', 
               'option_c', 'option_d', 'correct_answer']
 
 
@@ -106,6 +106,7 @@ class TestAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     readonly_fields = ['is_complete', 'created_date', 'question_summary']
     inlines = [QuestionInline]
+    fields = ['name', 'description', 'image', 'is_active']
     
     def save_related(self, request, form, formsets, change):
         super().save_related(request, form, formsets, change)
@@ -157,10 +158,16 @@ class TestAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ['test', 'module', 'question_number', 'correct_answer']
+    list_display = ['test', 'module', 'question_number', 'correct_answer', 'has_image']
     list_filter = ['test', 'module']
     search_fields = ['question_text', 'test__name']
     ordering = ['test', 'module', 'question_number']
+    fields = ['test', 'module', 'question_number', 'question_text', 'image', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer']
+    
+    def has_image(self, obj):
+        return bool(obj.image)
+    has_image.boolean = True
+    has_image.short_description = 'Image'
 
 
 @admin.register(TestResult)

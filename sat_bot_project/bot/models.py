@@ -19,6 +19,7 @@ class User(models.Model):
 class Test(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_complete = models.BooleanField(default=False, editable=False)
@@ -55,6 +56,7 @@ class Question(models.Model):
     module = models.IntegerField(choices=MODULE_CHOICES)
     question_number = models.IntegerField()
     question_text = models.TextField()
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
     option_a = models.TextField()
     option_b = models.TextField()
     option_c = models.TextField()

@@ -156,11 +156,22 @@ async def show_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    try:
-        await query.edit_message_text(text, reply_markup=reply_markup)
-    except:
-        # If message hasn't changed, just ignore
-        pass
+    await query.delete_message()
+    
+    if question.image:
+        with open(question.image.path, 'rb') as photo_file:
+            await context.bot.send_photo(
+                chat_id=query.message.chat_id,
+                photo=photo_file,
+                caption=text,
+                reply_markup=reply_markup
+            )
+    else:
+        await context.bot.send_message(
+            chat_id=query.message.chat_id,
+            text=text,
+            reply_markup=reply_markup
+        )
 
 async def answer_question(update: Update, context: ContextTypes.DEFAULT_TYPE, answer: str):
     """Record answer and refresh question display"""
