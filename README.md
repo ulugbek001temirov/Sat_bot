@@ -1,17 +1,15 @@
 SETUP INSTRUCTIONS:
-0. first of create venv:
+1. first of create venv:
     python -m venv venv
-    venv/Scripts/activate
-1. install all important libraries:
-    pip install -r requirements.txt
+    venv/Scripts/activate 
 
-2. Configure settings.py:
-   - Add 'bot' to INSTALLED_APPS
-   - Add TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'
+2. install all important libraries:
+    pip install -r requirements.txt
+   
 3. Create .env and add these 2:
     TELEGRAM_BOT_TOKEN="paste there"
     SECRET_KEY="paste there"
-4. Add your SECRET_KEY and your bot token in .env:
+4. Add your SECRET_KEY and your BOT_TOKEN in .env:
     
 5. Run Migrations:
    python manage.py makemigrations
@@ -27,6 +25,7 @@ SETUP INSTRUCTIONS:
    http://localhost:8000/admin
    - Login with superuser credentials
    - Add tests and questions
+
 9. Run but (in another one teminal):
     python run_bot.py
 
